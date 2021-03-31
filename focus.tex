@@ -1,0 +1,99 @@
+\documentclass[letterpaper,11pt,oneside]{memoir}
+\usepackage{infwarerr}
+\usepackage{bridge-mini} % reduced version of my bridge.sty
+\usepackage{bridgewinners} % taken without modification, but changing things below
+\usepackage{fontspec}
+\usepackage{unicode-math}  % to allow for new fonts in math mode (i.e., suit symbols)
+\usepackage{subfiles} % To have chapters be in separate docs
+\usepackage[margin=.2\textwidth]{geometry}
+\usepackage{longtable}
+\usepackage{graphicx, tikz}
+\usepackage[many]{tcolorbox}
+\usepackage{lettrine}
+\usepackage{color}
+%\usepackage{marginnote}
+
+
+\setmainfont{DejaVu Serif}
+\setmathfont{DejaVu Serif}
+
+\cftsetindents{part}{-1em}{3em} % Adjust table of content defaults, numbers and titles were running together.
+\cftsetindents{chapter}{-1em}{3em}
+\cftsetindents{section}{0em}{3em}
+\setcounter{tocdepth}{1} % include sections not subsections
+
+\abnormalparskip{1em} % add space between paragraphs for readability
+
+% redefine the default color for diamonds and clubs
+\definecolor{clubcolor}{RGB}{23,118,88}
+\definecolor{diamondcolor}{RGB}{249,131,10}
+
+% What suit symbols to use?  Flag for BW printing vs ebook/web
+\newboolean{bwprint}
+\setboolean{bwprint}{true}
+\ifthenelse{\boolean{bwprint}}{%
+	\standardsuitsymbols}{%
+	\colorsuitsymbols}
+% ---------------- %
+
+\letterten
+\chapterstyle{ell}
+\renewcommand{\chapterheadstart}{\vspace*{0em}}
+
+\setlength\parindent{0pt} % Ari prefers no indentation for all paragraphs.
+\tcbuselibrary{skins,breakable}
+
+
+\begin{document}
+\frontmatter
+\section*{}
+\thispagestyle{empty}
+\HUGE
+\renewcommand{\LettrineFontHook}{\fontspec{BAUHS93.ttf}}
+
+\lettrine[lraise=0.35,ante=\hspace*{2.2in}]{\textcolor{blue}{F}}{orcing}
+	
+\lettrine[lraise=0.35,ante=\hspace*{2.5in}]{\textcolor{blue}{O}}{ne}
+	
+\lettrine[lraise=0.35,ante=\hspace*{3in}]{\textcolor{blue}{C}}{lub}
+	
+\lettrine[lraise=0.35,ante=\hspace*{3.5in}]{\textcolor{blue}{U}}{sually}
+
+\lettrine[lraise=0.35,ante=\hspace*{4in}]{\textcolor{blue}{S}}{trong}
+
+\normalsize
+
+%\tableofcontents
+
+\mainmatter
+\chapter{Abstract}
+There are many strengths to Precision style systems, such as limited opening bids with tighter ranges as well as the ability to be able to open lighter due to these limits. Nothing is perfect of course; there are some weaknesses. One of these weakness is the \cl2 opener.  It is often true that responder is in a quandary as to whether to respond and how best to do so. The level being higher puts the constructive side at a disadvantage since responder may wish to respond on 8 counts constructively, seek a better strain with weaker hands as well as invite or game force.  Despite advances in the \di2 relay response, there are still many awkward auctions and situations.
+
+Enter FOCUS:  what if we used our \cl1 opener to show the 6 card suit club hand as well as all the strong variants? At first this may seem to put even more burden on the \cl1, which is in part true. However, when combined with a response structure which differentiates between 0-7, 8-11 and 12+ ranges I believe that better auctions might be achieved. The idea is that \textit{in general} opener will bid the cheapest number of clubs whenever they have the weaker hand. This still may allow such bids as the \di2 relay or bidding new suits in a non-forcing or forcing manner, but now the range of responders hand will be limited and the auction will have less ambiguity.
+
+This also frees up the \cl2 opener to be some other hand type. One of the disadvantages with the current TaJ/TaJ++ system is one of legality - due to the nature of our 0+ \ddd it is classified as Artificial in ACBL/USBF regulations; in short, that means it cannot be opened on 9 HCP (or lower) in most situations. If the one diamond opener is 2+ then it is quasi-natural, which lowers the minimum HCP range to 8 HCP for opening bids.  A minor point, but one rule which was inadvertently violated by both Tom and Jenni (holding the same cards) in the recent JLall2. The way Precision traditionally deals with this problem is with the \di2 opener for short diamonds. That bid often has 5 clubs but cannot play in that suit at the 2 level.  If we use the same style opener but use the \cl2 bid, we have a NF call which lets us escape into our likely long suit a level lower.
+
+\chapter{Summary}
+
+\begin{bidtable}{Opening Bids}
+	\cl1 & 10-15 6+ \ccc~ OR strong (16+ unbal, 17+ bal) \\
+	\di1 & 2+ \\
+	\cl2 & \exactshape{4415} minus 1 card, 10-15 \\
+	Other & No change \\
+\end{bidtable} 
+
+\begin{bidtable}{\orauction{1c}}
+	\di1 & Negative.  Slightly modified rebid structure. \\
+	\he1 & 12+ any (not primary \hhh); \cl2 rebid is NF but responder may bid obviously. With enough to GF opener should NOT rebid \cl2. \\
+	\sp1 & \hhh~or balanced 8-11. 1NT waiting, \cl2 is NF clubs, other NAT GF usually 6+. Opener must jump to \cl3 to GF in clubs. \\
+	1NT & \sss~8-11. \cl2 is NF, \di2 becomes the TaJ bid. \sp2 is GF \ddd, other nat GF \\
+	\cl2 & 8-11 either minor. With weak \ccc, opener may pass or bid \cl3. With GF should bid \di2. \\
+	\di2/\hhh & Xfer, 3-6. Accepting was already NF and is ambiguous as to hand type. \cl3 NF. 2NT GF with \ccc. \\
+	\sp2 & \exactshape{1444} 8-11. \cl3 NF, 2NT GF \ccc. \\
+	2NT & ? \\
+	3x & \shape{4441} 8-11 bid your singleton (not \sss) \\
+	\sp3 & AKQxxxx any \\
+\end{bidtable}
+
+\backmatter
+\end{document}
